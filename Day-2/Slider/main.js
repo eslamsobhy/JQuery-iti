@@ -35,7 +35,25 @@ $(".overlay").css({
 let overlayImg = $(".img-container img")[0];
 
 $(".images-container img").click(function () {
-  //   console.log($(this).attr("src"));
   $(overlayImg).attr("src", $(this).attr("src"));
   $(".overlay").css("display", "flex");
+});
+
+// Slider (next and prev buttons functionality)
+$(".prev").click(function () {
+  let imageNum = parseInt($(overlayImg).attr("src").split("/")[2][0]);
+  if (imageNum - 1 === 0) {
+    $(overlayImg).attr("src", `./images/3.jpg`);
+  } else {
+    $(overlayImg).attr("src", `./images/${(imageNum - 1) % 3}.jpg`);
+  }
+});
+
+$(".next").click(function () {
+  let imageNum = parseInt($(overlayImg).attr("src").split("/")[2][0]);
+  if (imageNum + 1 === 3) {
+    $(overlayImg).attr("src", `./images/3.jpg`);
+  } else {
+    $(overlayImg).attr("src", `./images/${(imageNum + 1) % 3}.jpg`);
+  }
 });
