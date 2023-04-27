@@ -60,3 +60,10 @@ $(".next").click(function () {
     $(overlayImg).attr("src", `./images/${(imageNum + 1) % imagesCount}.jpg`);
   }
 });
+
+// Closing the slider when clicking empty space
+$(".overlay").click(function (event) {
+  if (!$(event.target).is("img")) {
+    $(".overlay").css("display", "none");
+  }
+});
