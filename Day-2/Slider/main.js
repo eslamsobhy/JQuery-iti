@@ -25,3 +25,17 @@ $(".overlay").css({
 });
 
 $(".next,.prev").css("width", "30px");
+
+// Functionality
+$(".overlay").css({
+  display: "none",
+});
+
+// Overlay image
+let overlayImg = $(".img-container img")[0];
+
+$(".images-container img").click(function () {
+  //   console.log($(this).attr("src"));
+  $(overlayImg).attr("src", $(this).attr("src"));
+  $(".overlay").css("display", "flex");
+});
