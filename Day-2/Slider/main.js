@@ -34,6 +34,9 @@ $(".overlay").css({
 // Overlay image
 let overlayImg = $(".img-container img")[0];
 
+// Slider images count
+let imagesCount = $(".images-container img").length;
+
 $(".images-container img").click(function () {
   $(overlayImg).attr("src", $(this).attr("src"));
   $(".overlay").css("display", "flex");
@@ -43,17 +46,17 @@ $(".images-container img").click(function () {
 $(".prev").click(function () {
   let imageNum = parseInt($(overlayImg).attr("src").split("/")[2][0]);
   if (imageNum - 1 === 0) {
-    $(overlayImg).attr("src", `./images/3.jpg`);
+    $(overlayImg).attr("src", `./images/${imagesCount}.jpg`);
   } else {
-    $(overlayImg).attr("src", `./images/${(imageNum - 1) % 3}.jpg`);
+    $(overlayImg).attr("src", `./images/${(imageNum - 1) % imagesCount}.jpg`);
   }
 });
 
 $(".next").click(function () {
   let imageNum = parseInt($(overlayImg).attr("src").split("/")[2][0]);
-  if (imageNum + 1 === 3) {
-    $(overlayImg).attr("src", `./images/3.jpg`);
+  if (imageNum + 1 === imagesCount) {
+    $(overlayImg).attr("src", `./images/${imagesCount}.jpg`);
   } else {
-    $(overlayImg).attr("src", `./images/${(imageNum + 1) % 3}.jpg`);
+    $(overlayImg).attr("src", `./images/${(imageNum + 1) % imagesCount}.jpg`);
   }
 });
